@@ -11,7 +11,7 @@ const ProductCard = ({ product }: { product: TProductType }) => {
         alt={product.title}
         width={250}
         height={300}
-        className="h-[250px] rounded-lg object-contain lg:object-cover hover:scale-105 transition-all"
+        className="h-[250px] rounded-lg object-contain md:object-cover hover:scale-105 transition-all"
       />
       <div>
         <p className="text-base-bold text-gray-800">{product.title}</p>
