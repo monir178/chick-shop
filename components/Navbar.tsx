@@ -4,7 +4,6 @@ import { UserButton, useUser } from "@clerk/nextjs";
 import { Menu, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -22,7 +21,7 @@ const Navbar = () => {
   // const user = false;
 
   return (
-    <div className="sticky top-0 z-10 py-2 px-4 flex justify-between items-center bg-white">
+    <div className="sticky top-0 z-10 py-4 px-4 flex justify-between items-center bg-white">
       <Link href="/">
         <Image
           className="hidden md:block"
@@ -32,7 +31,7 @@ const Navbar = () => {
           height={50}
         />
         <Image
-          className="sm:hidden"
+          className="md:hidden"
           src="/logo.png"
           alt="logo"
           width={30}
