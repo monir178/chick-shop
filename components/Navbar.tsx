@@ -21,7 +21,7 @@ const Navbar = () => {
   // const user = false;
 
   return (
-    <div className="sticky top-0 z-10 py-4 px-4 flex justify-between items-center bg-white">
+    <div className="sticky top-0 z-10 py-4 px-4 lg:px-10 flex justify-between items-center bg-white">
       <Link href="/">
         <Image
           className="hidden md:block"

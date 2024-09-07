@@ -13,7 +13,7 @@ const Products = async () => {
       {!products || products.length === 0 ? (
         <p className="text-gray-800 mt-4">No Collections found</p>
       ) : (
-        <div className="flex mx-auto flex-wrap  gap-4">
+        <div className="flex flex-wrap gap-4 md:gap-6 lg:gap-16 justify-around">
           {products.map((product: TProductType) => (
             <ProductCard key={product._id} product={product} />
           ))}
