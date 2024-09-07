@@ -2,7 +2,10 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
     clerkId: String,
-    wishlist: Array,
+    wishlist: {
+        type: Array,
+        default: [],
+    },
     createdAt: {
         type: Date,
         default: Date.now,
