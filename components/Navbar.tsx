@@ -16,7 +16,7 @@ import { buttonVariants } from "./ui/button";
 
 const Navbar = () => {
   const { user } = useUser();
-  console.log(user);
+  // console.log(user);
 
   // const user = false;
 
