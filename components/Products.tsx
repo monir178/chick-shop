@@ -6,14 +6,14 @@ const Products = async () => {
 
   return (
     <div className="flex flex-col items-center gap-10 py-8 px-5">
-      <p className="text-heading4-bold lg:text-heading2-bold text-center text-gray-800">
+      <p className="text-heading4-bold lg:text-heading2-bold text-center md:text-heading3-bold text-gray-800">
         Products
       </p>
 
       {!products || products.length === 0 ? (
         <p className="text-gray-800 mt-4">No Collections found</p>
       ) : (
-        <div className="grid grid-cols-2 gap-4 md:gap-10 md:grid-cols-3 lg:grid-cols-4 lg:gap-16">
+        <div className="grid grid-cols-2 gap-8 md:gap-10 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 ">
           {products.map((product: TProductType) => (
             <ProductCard key={product._id} product={product} />
           ))}
