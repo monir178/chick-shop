@@ -1,4 +1,4 @@
-import { getCollections } from "@/lib/actions";
+import { getCollections } from "@/lib/actions/actions";
 import CollectionItem from "./CollectionItem";
 
 const Collections = async () => {

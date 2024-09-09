@@ -1,7 +1,7 @@
 import Gallery from "@/components/Gallery";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductInfo from "@/components/ProductInfo";
-import { getProductDetails } from "@/lib/actions";
+import { getProductDetails } from "@/lib/actions/actions";
 
 const ProductDetails = async ({
   params,

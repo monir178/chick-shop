@@ -44,7 +44,7 @@ const Navbar = () => {
       <div className="flex items-center gap-2">
         <Link
           href="/cart"
-          className="flex items-center gap-2 border rounded-lg px-2 py-1 transition-all hover:bg-red-500 hover:text-white">
+          className="flex items-center gap-2 border rounded-lg px-2 py-1 transition-all hover:bg-orange-500 hover:text-white">
           <ShoppingCart />
           <p className="font-bold">Cart (0)</p>
         </Link>
