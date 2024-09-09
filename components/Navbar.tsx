@@ -13,15 +13,17 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { buttonVariants } from "./ui/button";
+import useCart from "@/lib/hooks/useCart";
 
 const Navbar = () => {
   const { user } = useUser();
+  const cart = useCart();
   // console.log(user);
 
   // const user = false;
 
   return (
-    <div className="sticky top-0 z-10 py-4 px-4 lg:px-10 flex justify-between items-center bg-white">
+    <div className="sticky top-0 z-10 py-3 px-4 lg:px-10 flex justify-between items-center bg-white  shadow-md">
       <Link href="/">
         <Image
           className="hidden md:block"
@@ -44,9 +46,12 @@ const Navbar = () => {
       <div className="flex items-center gap-2">
         <Link
           href="/cart"
-          className="flex items-center gap-2 border rounded-lg px-2 py-1 transition-all hover:bg-orange-500 hover:text-white">
+          className="flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white">
           <ShoppingCart />
-          <p className="font-bold">Cart (0)</p>
+          <p className="font-bold ">Cart</p>
+          <div className="absolute top-[-10px] right-[-6px] bg-red-500 text-white rounded-sm size-6 flex justify-center items-center p-2">
+            {cart?.cartItems?.length}
+          </div>
         </Link>
 
         {user && (

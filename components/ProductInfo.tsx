@@ -5,6 +5,7 @@ import AddHeart from "./AddHeart";
 import { cn } from "@/lib/utils";
 import { MinusCircle, PlusCircle } from "lucide-react";
 import { Button } from "./ui/button";
+import useCart from "@/lib/hooks/useCart";
 
 const ProductInfo = ({ productInfo }: { productInfo: TProductType }) => {
   const [selectedColor, setSelectedColor] = useState<string>(
@@ -14,6 +15,8 @@ const ProductInfo = ({ productInfo }: { productInfo: TProductType }) => {
     productInfo.sizes[0]
   );
   const [quantity, setQuantity] = useState<number>(1);
+
+  const cart = useCart();
 
   return (
     <div className="flex max-w-[400px] flex-col gap-4">
@@ -90,7 +93,17 @@ const ProductInfo = ({ productInfo }: { productInfo: TProductType }) => {
         </div>
       </div>
 
-      <Button>Add To Cart</Button>
+      <Button
+        onClick={() => {
+          cart.addItem({
+            item: productInfo,
+            quantity,
+            color: selectedColor,
+            size: selectedSize,
+          });
+        }}>
+        Add To Cart
+      </Button>
     </div>
   );
 };
