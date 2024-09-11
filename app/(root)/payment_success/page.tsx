@@ -16,7 +16,7 @@ const SuccessPayment = () => {
   }, []);
 
   return (
-    <div className="h-screen flex flex-col justify-center items-center gap-5 text-center">
+    <div className="h-screen flex flex-col justify-center items-center gap-3 text-center">
       <Player
         animationData={successAnimation}
         autoplay
@@ -26,7 +26,7 @@ const SuccessPayment = () => {
       <div>
         <div className="flex flex-col text-green-600 items-center justify-center gap-2">
           <CircleCheckBig />
-          <p className="text-heading4-bold text-gray-800  ">
+          <p className="text-heading4-bold text-green-600  mb-1">
             Payment Successful
           </p>
         </div>
