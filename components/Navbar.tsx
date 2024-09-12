@@ -1,7 +1,7 @@
 "use client";
 
 import { UserButton, useUser } from "@clerk/nextjs";
-import { Menu, ShoppingCart } from "lucide-react";
+import { Menu, Search, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -14,18 +14,35 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { buttonVariants } from "./ui/button";
 import useCart from "@/lib/hooks/useCart";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
   const { user } = useUser();
   const cart = useCart();
+  const [query, setQuery] = useState("");
+  const router = useRouter();
   // console.log(user);
 
   // const user = false;
 
   return (
-    <div className="sticky top-0 z-10 py-3 px-4 lg:px-10 flex justify-between items-center bg-white  shadow-md">
+    <div className="sticky top-0 z-10 py-3 px-4 lg:px-10 flex gap-4 justify-between items-center bg-white  shadow-md">
       <Link className="cursor-pointer" href="/">
-        <Image src="/text-logo.png" alt="logo" width={120} height={50} />
+        <Image
+          className="hidden lg:block"
+          src="/text-logo.png"
+          alt="logo"
+          width={120}
+          height={50}
+        />
+        <Image
+          className="lg:hidden"
+          src="/logo.png"
+          alt="logo"
+          width={40}
+          height={40}
+        />
       </Link>
 
       <div className="hidden md:flex gap-4 text-base-bold ">
@@ -44,10 +61,25 @@ const Navbar = () => {
         </Link>
       </div>
 
+      <div className="flex gap-3 border border-gray-300  w-[200px] md:w-[350px] rounded-lg items-center justify-between px-3 py-1  ">
+        <input
+          className="outline-none"
+          type="text"
+          placeholder="Search..."
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+        />
+        <button
+          disabled={query === ""}
+          onClick={() => router.push(`/search/${query}`)}>
+          <Search className="cursor-pointer text-gray-500 hover:text-red-500" />
+        </button>
+      </div>
+
       <div className="flex items-center gap-4">
         <Link
           href="/cart"
-          className="flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white">
+          className="hidden md:flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white  ">
           <ShoppingCart />
           <p className="font-bold ">Cart</p>
           <div className="absolute top-[-10px] right-[-6px] bg-red-500 text-white rounded-sm size-6 flex justify-center items-center p-2">
@@ -60,23 +92,34 @@ const Navbar = () => {
             <Menu className="cursor-pointer md:hidden" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            <DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link href="/" className="hover:text-red-500">
                 Home
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link
                 href={user ? "/wishlist" : "/sign-in"}
                 className="hover:text-red-500">
                 Wishlist
               </Link>
             </DropdownMenuItem>
-            <DropdownMenuItem>
+            <DropdownMenuItem asChild>
               <Link
                 href={user ? "/orders" : "/sign-in"}
                 className="hover:text-red-500">
                 Orders
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem asChild>
+              <Link
+                href="/cart"
+                className="w-full flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white  ">
+                <ShoppingCart />
+                <p className="font-bold ">Cart</p>
+                <div className="absolute top-[-10px] right-[-6px] bg-red-500 text-white rounded-sm size-6 flex justify-center items-center p-2">
+                  {cart?.cartItems?.length}
+                </div>
               </Link>
             </DropdownMenuItem>
           </DropdownMenuContent>
