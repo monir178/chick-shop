@@ -19,3 +19,8 @@ export const getProductDetails = async (productId: string) => {
     return await productDetails.json()
 
 }
+
+export const getSearchedProducts = async (query: string) => {
+    const searchedProducts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/search/${query}`)
+    return await searchedProducts.json();
+}

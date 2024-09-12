@@ -27,25 +27,12 @@ const Navbar = () => {
   // const user = false;
 
   return (
-    <div className="sticky top-0 z-10 py-3 px-4 lg:px-10 flex gap-4 justify-between items-center bg-white  shadow-md">
+    <div className="sticky top-0 z-10 py-3 px-4 lg:px-10 flex gap-2 md:gap-4 justify-between items-center bg-white  shadow-md">
       <Link className="cursor-pointer" href="/">
-        <Image
-          className="hidden lg:block"
-          src="/text-logo.png"
-          alt="logo"
-          width={120}
-          height={50}
-        />
-        <Image
-          className="lg:hidden"
-          src="/logo.png"
-          alt="logo"
-          width={40}
-          height={40}
-        />
+        <Image src="/text-logo.png" alt="logo" width={120} height={50} />
       </Link>
 
-      <div className="hidden md:flex gap-4 text-base-bold ">
+      <div className="hidden lg:flex gap-4 text-base-bold ">
         <Link href="/" className="hover:text-red-500">
           Home
         </Link>
@@ -61,7 +48,7 @@ const Navbar = () => {
         </Link>
       </div>
 
-      <div className="flex gap-3 border border-gray-300  w-[200px] md:w-[350px] rounded-lg items-center justify-between px-3 py-1  ">
+      <div className=" gap-3 border border-gray-300   w-[350px] rounded-lg items-center justify-between px-3 py-1  hidden md:flex">
         <input
           className="outline-none"
           type="text"
@@ -89,7 +76,7 @@ const Navbar = () => {
 
         <DropdownMenu>
           <DropdownMenuTrigger>
-            <Menu className="cursor-pointer md:hidden" />
+            <Menu className="cursor-pointer lg:hidden" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
             <DropdownMenuItem asChild>

@@ -22,6 +22,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ClerkProvider>
           <Navbar />
+
           {children}
           <Toaster position="bottom-center" />
         </ClerkProvider>

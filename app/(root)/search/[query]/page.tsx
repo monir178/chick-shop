@@ -1,20 +1,17 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductCard from "@/components/ProductCard";
+import { getSearchedProducts } from "../../../../lib/actions/actions";
 
 const SearchPage = async ({ params }: { params: { query: string } }) => {
-  const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/search/${params.query}`
-  );
+  const { searchedProducts } = await getSearchedProducts(params.query);
 
-  const data = await res.json();
-
-  console.log(data.searchedProducts);
-  const searchedProducts = data.searchedProducts;
+  const decodedQuery = decodeURIComponent(params.query);
 
   return (
     <MaxWidthWrapper>
       <p className="text-heading3-bold text-gray-800 my-10">
-        Search results for {params.query}
+        Search results for{" "}
+        <span className="text-orange-500">{decodedQuery}</span>
       </p>
       {!searchedProducts ||
         (searchedProducts.length === 0 && (
