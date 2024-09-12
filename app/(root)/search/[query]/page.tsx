@@ -18,7 +18,7 @@ const SearchPage = async ({ params }: { params: { query: string } }) => {
           <p className="text-gray-800 text-center mt-4">No result found</p>
         ))}
       <div className="grid grid-cols-2 gap-8 md:gap-10 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 ">
-        {searchedProducts?.map((product: any) => (
+        {searchedProducts?.map((product: TProductType) => (
           <ProductCard key={product._id} product={product} />
         ))}
       </div>
