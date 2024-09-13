@@ -85,8 +85,6 @@ const Cart = () => {
               href="/products"
               className={buttonVariants({
                 variant: "link",
-                size: "sm",
-                className: "text-sm text-sky-500 underline-offset-2",
               })}>
               Add items to your cart &rarr;
             </Link>

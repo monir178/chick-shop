@@ -30,14 +30,20 @@ const Navbar = () => {
   // const user = false;
 
   return (
-    <div className="bg-white sticky top-0 z-10 py-3 lg:py-5 px-4 lg:px-10 flex flex-col gap-2 shadow-md">
+    <div className="bg-white sticky top-0 z-10 py-3 2xl:py-5 px-4 lg:px-10 flex flex-col gap-2 shadow-md">
       <div className="  flex gap-2 md:gap-4 justify-between items-center ">
         <Link className="cursor-pointer" href="/">
-          <Image src="/text-logo.png" alt="logo" width={120} height={50} />
+          <Image
+            src="/text-logo.png"
+            alt="logo"
+            width={120}
+            height={50}
+            className="h-auto w-auto"
+          />
         </Link>
 
         <div className="flex items-center gap-10">
-          <div className="hidden lg:flex gap-4 text-base-bold ">
+          <div className="hidden xl:flex gap-4 text-base-bold ">
             <Link
               href="/"
               className={cn(
@@ -62,11 +68,19 @@ const Navbar = () => {
               )}>
               Orders
             </Link>
+            <Link
+              href="/about"
+              className={cn(
+                "hover:text-red-500",
+                pathname === "/about" && "text-red-500"
+              )}>
+              About Us
+            </Link>
           </div>
 
           <div className="relative hidden md:flex items-center justify-between ">
             <Input
-              className="outline outline-1 outline-orange-300 w-full xl:w-[400px]"
+              className="outline outline-1 outline-orange-300 w-full 2xl:w-[400px]"
               type="text"
               placeholder="Search..."
               value={query}
@@ -100,32 +114,49 @@ const Navbar = () => {
 
           <DropdownMenu>
             <DropdownMenuTrigger>
-              <Menu className="cursor-pointer lg:hidden" />
+              <Menu className="cursor-pointer xl:hidden" />
             </DropdownMenuTrigger>
-            <DropdownMenuContent>
+            <DropdownMenuContent className="w-[200px] space-y-4 p-4">
               <DropdownMenuItem asChild>
-                <Link href="/" className="hover:text-red-500">
+                <Link
+                  href="/"
+                  className={cn("hover:text-red-500", {
+                    "text-red-500": pathname === "/",
+                  })}>
                   Home
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
                   href={user ? "/wishlist" : "/sign-in"}
-                  className="hover:text-red-500">
+                  className={cn("hover:text-red-500", {
+                    "text-red-500": pathname === "/wishlist",
+                  })}>
                   Wishlist
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
                   href={user ? "/orders" : "/sign-in"}
-                  className="hover:text-red-500">
+                  className={cn("hover:text-red-500", {
+                    "text-red-500": pathname === "/orders",
+                  })}>
                   Orders
                 </Link>
               </DropdownMenuItem>
               <DropdownMenuItem asChild>
                 <Link
+                  href="/about"
+                  className={cn("hover:text-red-500", {
+                    "text-red-500": pathname === "/about",
+                  })}>
+                  About
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
                   href="/cart"
-                  className="w-full flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white  ">
+                  className="flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white ">
                   <ShoppingCart />
                   <p className="font-bold ">Cart</p>
                   <div className="absolute top-[-10px] right-[-6px] bg-red-500 text-white rounded-sm size-6 flex justify-center items-center p-2">
