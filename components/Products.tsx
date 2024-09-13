@@ -4,6 +4,8 @@ import ProductCard from "./ProductCard";
 const Products = async () => {
   const products = await getProducts();
 
+  console.log("Products =>", products.length);
+
   return (
     <div className="flex flex-col items-center gap-10 py-8 px-5">
       <p className="text-heading4-bold lg:text-heading2-bold text-center md:text-heading3-bold text-gray-800">
@@ -25,4 +27,4 @@ const Products = async () => {
 
 export default Products;
 
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";

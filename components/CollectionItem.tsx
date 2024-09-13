@@ -20,7 +20,7 @@ const CollectionItem = ({ collection }: { collection: TCollectionType }) => {
           alt={collection.title}
           width={300}
           height={200}
-          className="rounded-lg"
+          className="rounded-lg h-auto md:h-[130px]"
         />
         {/* Show Tooltip on Hover */}
         {isHovered && <AnimatedTooltip item={collection.title} />}
