@@ -65,27 +65,33 @@ const Wishlist = () => {
     <CustomLoader />
   ) : (
     <MaxWidthWrapper className="py-8">
-      <h1 className="text-heading3-bold my-6">Your Wishlist</h1>
       {!wishlist || wishlist.length === 0 ? (
-        <div className="flex flex-col gap-4">
-          <p className="text-gray-700 text-center">Your wishlist is empty</p>
+        <div className="flex h-screen items-center justify-center flex-col gap-4">
+          <p className="text-gray-700 text-center text-heading3-bold">
+            Your wishlist is empty
+          </p>
           <Link
             className={buttonVariants({
               variant: "link",
             })}
-            href="/products">
-            Go back to products &rarr;
+            href="/">
+            Go back to Home &rarr;
           </Link>
         </div>
       ) : (
-        <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-16">
-          {wishlist?.map((product) => (
-            <ProductCard
-              updateSignedInUser={updateSignedInUser}
-              key={product._id}
-              product={product}
-            />
-          ))}
+        <div>
+          <h1 className="text-heading3-bold my-6 text-gray-800">
+            Your Wishlist
+          </h1>
+          <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-16">
+            {wishlist?.map((product) => (
+              <ProductCard
+                updateSignedInUser={updateSignedInUser}
+                key={product._id}
+                product={product}
+              />
+            ))}
+          </div>
         </div>
       )}
     </MaxWidthWrapper>

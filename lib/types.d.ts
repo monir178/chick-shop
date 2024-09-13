@@ -32,13 +32,13 @@ type TOrderType = {
     shippingAddress: Object;
     _id: string;
     customerClerkId: string;
-    products: [OrderItemType]
+    products: [TOrderItemType]
     shippingRate: string;
-    totalAmount: number
+    totalAmount: number;
 }
 
 type TOrderItemType = {
-    product: ProductType;
+    product: TProductType;
     color: string;
     size: string;
     quantity: number;
