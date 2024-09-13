@@ -10,7 +10,7 @@ const CollectionDetails = async ({
 }) => {
   const collectionDetails = await getCollectionDetails(params.collectionId);
 
-  console.log("Collection Details =>", collectionDetails);
+  // console.log("Collection Details =>", collectionDetails);
 
   return (
     <MaxWidthWrapper className="flex flex-col text-gray-500  items-center gap-8 py-10">
