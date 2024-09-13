@@ -5,12 +5,17 @@ import { Heart } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
-const AddHeart = ({ product }: { product: TProductType }) => {
+interface IAddHeartProps {
+  product: TProductType;
+  updateSignedInUser?: (updatedUser: TUserType) => void;
+}
+
+const AddHeart = ({ product, updateSignedInUser }: IAddHeartProps) => {
   const { user } = useUser();
   const router = useRouter();
 
   const [loading, setLoading] = useState(true);
-  const [signedInUser, setSignedInUser] = useState<TUserType | null>(null);
+
   const [isLiked, setIsLiked] = useState(false);
 
   const getUser = async () => {
@@ -18,7 +23,7 @@ const AddHeart = ({ product }: { product: TProductType }) => {
       setLoading(true);
       const res = await fetch("/api/users");
       const data = await res.json();
-      setSignedInUser(data);
+
       setIsLiked(data.wishlist.includes(product._id));
       setLoading(false);
     } catch (error) {
@@ -51,8 +56,9 @@ const AddHeart = ({ product }: { product: TProductType }) => {
         });
 
         const updatedUser = await res.json();
-        setSignedInUser(updatedUser);
+
         setIsLiked(updatedUser.wishlist.includes(product._id));
+        updateSignedInUser && updateSignedInUser(updatedUser);
         setLoading(false);
       }
     } catch (error) {
@@ -61,7 +67,7 @@ const AddHeart = ({ product }: { product: TProductType }) => {
   };
 
   return (
-    <button onClick={handleLike}>
+    <button disabled={loading} onClick={handleLike}>
       <Heart fill={`${isLiked ? "red" : "none"}`} />
     </button>
   );

@@ -2,7 +2,12 @@ import Image from "next/image";
 import Link from "next/link";
 import AddHeart from "./AddHeart";
 
-const ProductCard = ({ product }: { product: TProductType }) => {
+interface IProductCardProps {
+  product: TProductType;
+  updateSignedInUser?: (updatedUser: TUserType) => void;
+}
+
+const ProductCard = ({ product, updateSignedInUser }: IProductCardProps) => {
   return (
     <div className="flex flex-col gap-2 ">
       <Link href={`/products/${product._id}`}>
@@ -20,7 +25,7 @@ const ProductCard = ({ product }: { product: TProductType }) => {
         <p className="text-small-medium text-gray-600">{product.category}</p>
         <div className="mt-2 flex justify-between items-center">
           <p className="text-orange-600 font-bold">${product.price}</p>
-          <AddHeart product={product} />
+          <AddHeart updateSignedInUser={updateSignedInUser} product={product} />
         </div>
       </div>
     </div>
