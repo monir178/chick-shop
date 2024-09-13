@@ -10,7 +10,7 @@ const OrdersPage = async () => {
 
   const orders = await getOrders(userId as string);
 
-  console.log("Orders =>", orders[0].products);
+  // console.log("Orders =>", orders[0].products);
 
   return (
     <MaxWidthWrapper className="py-5">
