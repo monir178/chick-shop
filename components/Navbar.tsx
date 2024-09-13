@@ -76,6 +76,14 @@ const Navbar = () => {
               )}>
               About Us
             </Link>
+            <Link
+              href="/contact"
+              className={cn(
+                "hover:text-red-500",
+                pathname === "/contact" && "text-red-500"
+              )}>
+              Contact Us
+            </Link>
           </div>
 
           <div className="relative hidden md:flex items-center justify-between ">
@@ -153,6 +161,16 @@ const Navbar = () => {
                   About
                 </Link>
               </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <Link
+                  href="/contact"
+                  className={cn("hover:text-red-500", {
+                    "text-red-500": pathname === "/contact",
+                  })}>
+                  Contact Us
+                </Link>
+              </DropdownMenuItem>
+
               <DropdownMenuItem asChild>
                 <Link
                   href="/cart"

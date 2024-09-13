@@ -24,7 +24,7 @@ export default function RootLayout({
         <ClerkProvider>
           <Navbar />
 
-          {children}
+          <div className="min-h-screen">{children}</div>
           <Toaster position="bottom-center" />
           <Footer />
         </ClerkProvider>
