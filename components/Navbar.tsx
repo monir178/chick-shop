@@ -16,13 +16,15 @@ import {
 import { buttonVariants } from "./ui/button";
 import useCart from "@/lib/hooks/useCart";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const { user } = useUser();
   const cart = useCart();
   const [query, setQuery] = useState("");
   const router = useRouter();
+  const pathname = usePathname();
   // console.log(user);
 
   // const user = false;
@@ -36,17 +38,28 @@ const Navbar = () => {
 
         <div className="flex items-center gap-10">
           <div className="hidden lg:flex gap-4 text-base-bold ">
-            <Link href="/" className="hover:text-red-500">
+            <Link
+              href="/"
+              className={cn(
+                "hover:text-red-500",
+                pathname === "/" && "text-red-500"
+              )}>
               Home
             </Link>
             <Link
               href={user ? "/wishlist" : "/sign-in"}
-              className="hover:text-red-500">
+              className={cn(
+                "hover:text-red-500",
+                pathname === "/wishlist" && "text-red-500"
+              )}>
               Wishlist
             </Link>
             <Link
               href={user ? "/orders" : "/sign-in"}
-              className="hover:text-red-500">
+              className={cn(
+                "hover:text-red-500",
+                pathname === "/orders" && "text-red-500"
+              )}>
               Orders
             </Link>
           </div>

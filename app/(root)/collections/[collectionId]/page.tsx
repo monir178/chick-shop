@@ -40,6 +40,6 @@ const CollectionDetails = async ({
   );
 };
 
-export default CollectionDetails;
-
 export const dynamic = "force-dynamic";
+
+export default CollectionDetails;
