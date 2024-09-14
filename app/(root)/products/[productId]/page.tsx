@@ -21,10 +21,10 @@ const ProductDetails = async ({
         <Gallery productMedia={productDetails.media} />
         <ProductInfo productInfo={productDetails} />
       </MaxWidthWrapper>
-      <MaxWidthWrapper className="flex flex-col items-center py-5">
+      <MaxWidthWrapper className="flex flex-col mx-auto w-full items-center py-5">
         <p className="text-heading3-bold text-gray-800">Related Products</p>
 
-        <div className="flex flex-wrap gap-16 mx-auto mt-8">
+        <div className="flex flex-wrap gap-16 justify-center items-center mt-8">
           {relatedProducts?.map((product: TProductType) => (
             <ProductCard key={product._id} product={product} />
           ))}
