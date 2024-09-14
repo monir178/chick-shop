@@ -14,5 +14,3 @@ export default function Home() {
     </MaxWidthWrapper>
   );
 }
-
-export const dynamic = "force-dynamic";
