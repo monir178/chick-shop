@@ -52,29 +52,33 @@ const Navbar = () => {
               )}>
               Home
             </Link>
-            <Link
-              href={user ? "/wishlist" : "/sign-in"}
-              className={cn(
-                "hover:text-red-500",
-                pathname === "/wishlist" && "text-red-500"
-              )}>
-              Wishlist
-            </Link>
-            <Link
-              href={user ? "/orders" : "/sign-in"}
-              className={cn(
-                "hover:text-red-500",
-                pathname === "/orders" && "text-red-500"
-              )}>
-              Orders
-            </Link>
+            {user && (
+              <>
+                <Link
+                  href={user ? "/wishlist" : "/sign-in"}
+                  className={cn(
+                    "hover:text-red-500",
+                    pathname === "/wishlist" && "text-red-500"
+                  )}>
+                  Wishlist
+                </Link>
+                <Link
+                  href={user ? "/orders" : "/sign-in"}
+                  className={cn(
+                    "hover:text-red-500",
+                    pathname === "/orders" && "text-red-500"
+                  )}>
+                  Orders
+                </Link>
+              </>
+            )}
             <Link
               href="/about"
               className={cn(
                 "hover:text-red-500",
                 pathname === "/about" && "text-red-500"
               )}>
-              About Us
+              About
             </Link>
             <Link
               href="/contact"
@@ -82,7 +86,7 @@ const Navbar = () => {
                 "hover:text-red-500",
                 pathname === "/contact" && "text-red-500"
               )}>
-              Contact Us
+              Contact
             </Link>
           </div>
 
@@ -134,24 +138,28 @@ const Navbar = () => {
                   Home
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link
-                  href={user ? "/wishlist" : "/sign-in"}
-                  className={cn("hover:text-red-500", {
-                    "text-red-500": pathname === "/wishlist",
-                  })}>
-                  Wishlist
-                </Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                <Link
-                  href={user ? "/orders" : "/sign-in"}
-                  className={cn("hover:text-red-500", {
-                    "text-red-500": pathname === "/orders",
-                  })}>
-                  Orders
-                </Link>
-              </DropdownMenuItem>
+              {user && (
+                <>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href={user ? "/wishlist" : "/sign-in"}
+                      className={cn("hover:text-red-500", {
+                        "text-red-500": pathname === "/wishlist",
+                      })}>
+                      Wishlist
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <Link
+                      href={user ? "/orders" : "/sign-in"}
+                      className={cn("hover:text-red-500", {
+                        "text-red-500": pathname === "/orders",
+                      })}>
+                      Orders
+                    </Link>
+                  </DropdownMenuItem>
+                </>
+              )}
               <DropdownMenuItem asChild>
                 <Link
                   href="/about"
@@ -167,7 +175,7 @@ const Navbar = () => {
                   className={cn("hover:text-red-500", {
                     "text-red-500": pathname === "/contact",
                   })}>
-                  Contact Us
+                  Contact
                 </Link>
               </DropdownMenuItem>
 
