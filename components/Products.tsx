@@ -4,7 +4,7 @@ import ProductCard from "./ProductCard";
 const Products = async () => {
   const products = await getProducts();
 
-  console.log("Products =>", products.length);
+  // console.log("Products =>", products.length);
 
   return (
     <div className="flex flex-col items-center gap-10 py-8 px-5">

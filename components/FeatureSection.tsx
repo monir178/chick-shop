@@ -6,10 +6,8 @@ import Image from "next/image";
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { IconBrandYoutubeFilled } from "@tabler/icons-react";
-import Link from "next/link";
 
-export function FeaturesSectionDemo() {
+export function FeaturesSection() {
   const features = [
     {
       title: "Customer Satisfaction",
@@ -107,7 +105,7 @@ export const SkeletonOne = () => {
         <div className="flex flex-1 w-full h-[full] md:h-[300px] lg:h-[400px] flex-col space-y-2  ">
           {/* TODO */}
           <Image
-            src="/happy_customers.jpg"
+            src="/happy.jpg"
             alt="header"
             width={800}
             height={800}

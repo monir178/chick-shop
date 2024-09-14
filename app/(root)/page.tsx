@@ -1,6 +1,7 @@
 import Banner from "@/components/Banner";
 import Collections from "@/components/Collections";
-import { FeaturesSectionDemo } from "@/components/FeatureSection";
+import { FeaturesSection } from "@/components/FeatureSection";
+
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import Products from "@/components/Products";
 
@@ -10,7 +11,7 @@ export default function Home() {
       <Banner />
       <Collections />
       <Products />
-      <FeaturesSectionDemo />
+      <FeaturesSection />
     </MaxWidthWrapper>
   );
 }
