@@ -3,12 +3,15 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductCard from "@/components/ProductCard";
 import ProductInfo from "@/components/ProductInfo";
 import { getProductDetails, getRelatedProducts } from "@/lib/actions/actions";
+import { auth } from "@clerk/nextjs/server";
 
 const ProductDetails = async ({
   params,
 }: {
   params: { productId: string };
 }) => {
+  const { userId } = auth();
+
   const productDetails = await getProductDetails(params.productId);
 
   const relatedProducts = await getRelatedProducts(params.productId);
@@ -26,7 +29,7 @@ const ProductDetails = async ({
 
         <div className="flex flex-wrap gap-16 justify-center items-center mt-8">
           {relatedProducts?.map((product: TProductType) => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard key={product._id} userId={userId} product={product} />
           ))}
         </div>
       </MaxWidthWrapper>

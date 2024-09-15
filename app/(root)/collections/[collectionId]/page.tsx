@@ -1,6 +1,7 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductCard from "@/components/ProductCard";
 import { getCollectionDetails } from "@/lib/actions/actions";
+import { auth } from "@clerk/nextjs/server";
 import Image from "next/image";
 
 const CollectionDetails = async ({
@@ -8,6 +9,8 @@ const CollectionDetails = async ({
 }: {
   params: { collectionId: string };
 }) => {
+  const { userId } = auth();
+
   const collectionDetails = await getCollectionDetails(params.collectionId);
 
   // console.log("Collection Details =>", collectionDetails);
@@ -31,7 +34,7 @@ const CollectionDetails = async ({
       <div className="flex flex-wrap justify-center items-center gap-12 mt-5 md:gap-18 ">
         {collectionDetails?.products ? (
           collectionDetails.products?.map((product: TProductType) => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard userId={userId} key={product._id} product={product} />
           ))
         ) : (
           <p className="text-center text-">No product found</p>

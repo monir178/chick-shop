@@ -1,9 +1,12 @@
+import { auth } from "@clerk/nextjs/server";
+
 import { getProducts } from "@/lib/actions/actions";
 import ProductCard from "./ProductCard";
 
 const Products = async () => {
   const products = await getProducts();
-
+  const { userId } = auth();
+  console.log("userId =>", userId);
   // console.log("Products =>", products.length);
 
   return (
@@ -17,7 +20,7 @@ const Products = async () => {
       ) : (
         <div className="grid grid-cols-2 gap-8 md:gap-10 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 ">
           {products.map((product: TProductType) => (
-            <ProductCard key={product._id} product={product} />
+            <ProductCard key={product._id} product={product} userId={userId} />
           ))}
         </div>
       )}

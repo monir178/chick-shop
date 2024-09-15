@@ -1,9 +1,12 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductCard from "@/components/ProductCard";
 import { getSearchedProducts } from "../../../../lib/actions/actions";
+import { auth } from "@clerk/nextjs/server";
 
 const SearchPage = async ({ params }: { params: { query: string } }) => {
   const { searchedProducts } = await getSearchedProducts(params.query);
+
+  const { userId } = auth();
 
   const decodedQuery = decodeURIComponent(params.query);
 
@@ -19,7 +22,7 @@ const SearchPage = async ({ params }: { params: { query: string } }) => {
         ))}
       <div className="grid grid-cols-2 gap-8 md:gap-10 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 ">
         {searchedProducts?.map((product: TProductType) => (
-          <ProductCard key={product._id} product={product} />
+          <ProductCard key={product._id} userId={userId} product={product} />
         ))}
       </div>
     </MaxWidthWrapper>

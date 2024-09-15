@@ -1,9 +1,12 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import ProductCard from "@/components/ProductCard";
 import { getProducts } from "@/lib/actions/actions";
+import { auth } from "@clerk/nextjs/server";
 
 const ProductsPage = async () => {
   const products = await getProducts();
+
+  const { userId } = auth();
 
   return (
     <MaxWidthWrapper>
@@ -17,7 +20,11 @@ const ProductsPage = async () => {
         ) : (
           <div className="grid grid-cols-2 gap-8 md:gap-10 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-5 ">
             {products.map((product: TProductType) => (
-              <ProductCard key={product._id} product={product} />
+              <ProductCard
+                key={product._id}
+                userId={userId}
+                product={product}
+              />
             ))}
           </div>
         )}
