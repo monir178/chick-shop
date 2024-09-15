@@ -63,7 +63,7 @@ const OrdersPage = async () => {
                             {orderItem?.product?.title}
                           </span>
                         </p>
-                        {orderItem.color && (
+                        {orderItem?.color && (
                           <p className="text-small-medium">
                             Color:{" "}
                             <span className="text-small-bold">
@@ -83,7 +83,7 @@ const OrdersPage = async () => {
                         <p className="text-small-medium">
                           Unit Price:{" "}
                           <span className="text-small-bold">
-                            {orderItem?.product.price}
+                            {orderItem?.product?.price}
                           </span>
                         </p>
                         <p className="text-small-medium">

@@ -12,8 +12,8 @@ const ProductCard = ({ product, updateSignedInUser }: IProductCardProps) => {
     <div className="flex flex-col gap-2 ">
       <Link href={`/products/${product._id}`}>
         <Image
-          src={product.media[0]}
-          alt={product.title}
+          src={product?.media[0]}
+          alt={product?.title}
           width={250}
           height={300}
           className="h-[250px] rounded-lg object-contain md:object-cover hover:scale-105 transition-all"
