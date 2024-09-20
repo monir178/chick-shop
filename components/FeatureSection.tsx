@@ -6,6 +6,7 @@ import Image from "next/image";
 import createGlobe from "cobe";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
+import HeadingText from "./HeadingText";
 
 export function FeaturesSection() {
   const features = [
@@ -41,15 +42,13 @@ export function FeaturesSection() {
     },
   ];
   return (
-    <div className="relative z-20 py-5 lg:py-10 mx-auto">
-      <div>
-        <h4 className="text-heading3-bold lg:leading-tight max-w-5xl mx-auto text-center tracking-tight text-gray-800 dark:text-white">
-          Why Shop With Us
-        </h4>
+    <div className="relative z-20  mx-auto">
+      <div className="mb-4">
+        <HeadingText text="Why shop with us?" />
       </div>
 
       <div className="relative ">
-        <div className="grid grid-cols-1 lg:grid-cols-6 mt-12 xl:border rounded-md dark:border-neutral-800">
+        <div className="grid grid-cols-1 lg:grid-cols-6  xl:border rounded-md dark:border-neutral-800">
           {features.map((feature) => (
             <FeatureCard key={feature.title} className={feature.className}>
               <FeatureTitle>{feature.title}</FeatureTitle>

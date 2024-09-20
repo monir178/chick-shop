@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 
 const Wishlist = () => {
   const { user } = useUser();
+  console.log("user =>", typeof user);
 
   const [loading, setLoading] = useState(true);
   const [signedInUser, setSignedInUser] = useState<TUserType | null>(null);
@@ -84,11 +85,12 @@ const Wishlist = () => {
             Your Wishlist
           </h1>
           <div className="flex flex-wrap justify-center gap-8 md:gap-12 mt-16">
-            {wishlist?.map((product) => (
+            {wishlist?.map((product: TProductType) => (
               <ProductCard
                 updateSignedInUser={updateSignedInUser}
                 key={product._id}
                 product={product}
+                user={user}
               />
             ))}
           </div>

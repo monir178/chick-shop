@@ -7,7 +7,7 @@ import Products from "@/components/Products";
 
 export default function Home() {
   return (
-    <MaxWidthWrapper className="space-y-4 lg:space-y-12">
+    <MaxWidthWrapper className="space-y-6 md:space-y-16">
       <Banner />
       <Collections />
       <Products />

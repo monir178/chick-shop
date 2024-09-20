@@ -2,6 +2,7 @@ import { auth } from "@clerk/nextjs/server";
 
 import { getProducts } from "@/lib/actions/actions";
 import ProductCard from "./ProductCard";
+import HeadingText from "./HeadingText";
 
 const Products = async () => {
   const products = await getProducts();
@@ -10,10 +11,8 @@ const Products = async () => {
   // console.log("Products =>", products.length);
 
   return (
-    <div className="flex flex-col items-center gap-10 py-8 px-5">
-      <p className="text-heading4-bold lg:text-heading2-bold text-center md:text-heading3-bold text-gray-800">
-        Products
-      </p>
+    <div className="flex flex-col gap-4 ">
+      <HeadingText text="Products" />
 
       {!products || products.length === 0 ? (
         <p className="text-gray-800 mt-4">No Collections found</p>

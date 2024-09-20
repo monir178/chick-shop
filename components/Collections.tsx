@@ -1,14 +1,13 @@
 import { getCollections } from "@/lib/actions/actions";
 import CollectionItem from "./CollectionItem";
+import HeadingText from "./HeadingText";
 
 const Collections = async () => {
   const collections = await getCollections();
 
   return (
-    <div className="flex flex-col items-center gap-10 py-8 px-5">
-      <p className="text-heading4-bold md:text-heading3-bold lg:text-heading2-bold text-center text-gray-800">
-        Collections
-      </p>
+    <div className="flex flex-col  gap-4">
+      <HeadingText text="Collections" />
       {!collections || collections.length === 0 ? (
         <p className="text-gray-800 mt-4 font-bold">No Collections found</p>
       ) : (

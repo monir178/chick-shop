@@ -3,9 +3,16 @@ import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 // Define public routes using the createRouteMatcher function
 const isPublicRoute = createRouteMatcher(["/:path*", "/sign-in(.*)", "/sign-up(.*)"]);
 
+// Define private routes using the createRouteMatcher function
+const isPrivateRoute = createRouteMatcher(["/wishlist", "/orders"]);
+
 export default clerkMiddleware((auth, request) => {
-    // Protect routes that are not public
-    if (!isPublicRoute(request)) {
+    // If the route is private, enforce authentication
+    if (isPrivateRoute(request)) {
+        auth().protect();
+    }
+    // Protect all non-public routes
+    else if (!isPublicRoute(request)) {
         auth().protect();
     }
 });

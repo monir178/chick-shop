@@ -214,7 +214,7 @@ const AboutUs = () => {
         </div>
 
         {/* Our Values */}
-        <div className="mb-12">
+        <div className="mb-12 text-center">
           <h2 className="text-heading3-bold font-bold text-gray-800 mb-4 text-center">
             Our Values
           </h2>

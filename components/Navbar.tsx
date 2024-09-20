@@ -9,8 +9,6 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { buttonVariants } from "./ui/button";
@@ -116,13 +114,25 @@ const Navbar = () => {
         <div className="flex items-center gap-4">
           <Link
             href="/cart"
-            className="hidden md:flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white  ">
+            className="flex items-center gap-2 border rounded-lg px-2 relative py-1 transition-all hover:bg-orange-500 hover:text-white  ">
             <ShoppingCart />
             <p className="font-bold ">Cart</p>
             <div className="absolute top-[-10px] right-[-6px] bg-red-500 text-white rounded-sm size-6 flex justify-center items-center p-2">
               {cart?.cartItems?.length}
             </div>
           </Link>
+
+          {user ? (
+            <UserButton afterSwitchSessionUrl="/sign-in" />
+          ) : (
+            <Link
+              className={buttonVariants({
+                variant: "outline",
+              })}
+              href="/sign-in">
+              Sign In
+            </Link>
+          )}
 
           <DropdownMenu>
             <DropdownMenuTrigger>
@@ -193,7 +203,7 @@ const Navbar = () => {
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {user ? (
+          {/* {user ? (
             <UserButton afterSwitchSessionUrl="/sign-in" />
           ) : (
             <Link
@@ -203,12 +213,12 @@ const Navbar = () => {
               href="/sign-in">
               Sign In
             </Link>
-          )}
+          )} */}
         </div>
       </div>
 
       {/* Search bar for mobile */}
-      <div className="relative flex items-center justify-between sm:hidden">
+      <div className="relative flex items-center justify-between md:hidden">
         <Input
           className="outline outline-1 outline-orange-300 pl-10 pr-12 w-full"
           type="text"
