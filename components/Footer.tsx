@@ -1,3 +1,4 @@
+import { ExternalLink } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -96,6 +97,19 @@ const Footer = () => {
         </div>
 
         <div className="mt-6 border-t border-gray-700 pt-4 text-center">
+          <p className="text-gray-200 text-sm flex flex-col md:flex-row gap-2 mx-auto w-fit">
+            Developed by
+            <Link
+              href="https://site-monir.vercel.app/"
+              target="_blank"
+              className="text-orange-600 hover:underline underline-offset-2 flex w-fit items-center gap-2 text-center mb-2">
+              <span className="text-center"> Md Moniruzzaman Monir</span>
+              <span className="text-center">
+                {" "}
+                <ExternalLink />
+              </span>
+            </Link>{" "}
+          </p>
           <p className="text-gray-400 text-sm">
             &copy; {new Date().getFullYear()} Chick Shop. All rights reserved.
           </p>
