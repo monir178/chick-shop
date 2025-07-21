@@ -97,7 +97,7 @@ const Footer = () => {
         </div>
 
         <div className="mt-6 border-t border-gray-700 pt-4 text-center">
-          <p className="text-gray-200 text-sm flex flex-col md:flex-row gap-2 mx-auto w-fit">
+          {/* <p className="text-gray-200 text-sm flex flex-col md:flex-row gap-2 mx-auto w-fit">
             Developed by
             <Link
               href="https://site-monir.vercel.app/"
@@ -109,7 +109,7 @@ const Footer = () => {
                 <ExternalLink />
               </span>
             </Link>{" "}
-          </p>
+          </p> */}
           <p className="text-gray-400 text-sm">
             &copy; {new Date().getFullYear()} Chick Shop. All rights reserved.
           </p>
